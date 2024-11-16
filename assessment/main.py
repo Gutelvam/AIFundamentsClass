@@ -6,8 +6,7 @@ from csp_solver import csp_solver
 
 # Load set the file path, use the input to define the name
 # file_path = input("Enter the path path") or "p01_dataset_8.txt";
-file_path = "p01_dataset_8.txt"
-print(os.getcwd())
+file_path = "assessment/p01_dataset_8.txt"
 
 with open(file_path, "r") as file:
     proj_data = parser.parse_data(file)
