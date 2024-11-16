@@ -37,4 +37,18 @@ def define_problem(data: ProjectData):
         start_times,
     )
 
+    # problem.addConstraint(lambda start : start == 0, ("job_1",))
+
+    # problem.addConstraint(
+    #     lambda *start_times: dConstraint.makespan_constraint(
+    #         *start_times, project_data=data, horizon=data.general_info.horizon
+    #     ),
+    #     start_times
+    # )
+
+    # problem.addConstraint(
+    #     lambda *start_times: dConstraint.full_resource_utilization_constraint(*start_times, time_slots=domain, project_data=data),
+    #     start_times
+    # )
+
     return problem
