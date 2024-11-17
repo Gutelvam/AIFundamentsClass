@@ -3,7 +3,7 @@ from data_types.parse_types import *
 
 import csp_solver.defined_constraints as dConstraint
 
-from constraint import *
+from constraint import Problem
 
 
 def define_problem(data: ProjectData):
