@@ -19,15 +19,14 @@ def define_problem(data: ProjectData):
 
         problem.addVariable(var_name, domain)
 
-    for job in data.precedence_relations:
         for successor in job.successors:
-            duration = data.durations_resources[job.job_number].duration
+            duration = data.durations_resources[number - 1].duration
 
             problem.addConstraint(
                 lambda start_j, start_s, duration=duration: dConstraint.sucessor_constraint(
                     start_j, start_s, duration
                 ),
-                (f"job_{job.job_number}", f"job_{successor}"),
+                (f"job_{number}", f"job_{successor}"),
             )
 
     problem.addConstraint(
@@ -36,19 +35,5 @@ def define_problem(data: ProjectData):
         ),
         start_times,
     )
-
-    # problem.addConstraint(lambda start : start == 0, ("job_1",))
-
-    # problem.addConstraint(
-    #     lambda *start_times: dConstraint.makespan_constraint(
-    #         *start_times, project_data=data, horizon=data.general_info.horizon
-    #     ),
-    #     start_times
-    # )
-
-    # problem.addConstraint(
-    #     lambda *start_times: dConstraint.full_resource_utilization_constraint(*start_times, time_slots=domain, project_data=data),
-    #     start_times
-    # )
 
     return problem
