@@ -8,7 +8,7 @@ start_time = time.time()
 
 # Load set the 5file path, use the input to define the name
 # file_path = input("Enter the path path") or "p01_dataset_8.txt";
-file_path = "assessment/p01_dataset_8.txt"
+file_path = "assessment/p01_dataset_10.txt"
 
 with open(file_path, "r") as file:
     proj_data = parser.parse_data(file)
