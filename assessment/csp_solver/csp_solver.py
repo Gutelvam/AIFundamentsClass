@@ -7,7 +7,9 @@ from constraint import Problem
 
 
 def define_problem(data: ProjectData):
-    domain = range(data.general_info.horizon + 1)
+    longestProject = max(data.projects_summary, key=lambda summary: summary.due_date).due_date
+    domain = range(longestProject + 1)
+
     start_times = [f"job_{job.job_number}" for job in data.precedence_relations];
 
     problem = Problem()
@@ -23,7 +25,7 @@ def define_problem(data: ProjectData):
             duration = data.durations_resources[number - 1].duration
 
             problem.addConstraint(
-                lambda start_j, start_s, duration=duration: dConstraint.sucessor_constraint(
+                lambda start_j, start_s, duration=duration: dConstraint.successor_constraint(
                     start_j, start_s, duration
                 ),
                 (f"job_{number}", f"job_{successor}"),
