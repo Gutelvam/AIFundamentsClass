@@ -106,7 +106,7 @@ def parse_file(file) -> ProjectData:
 
                 splits = line.split()
                 if splits:
-                    resourcesData = {}
+                    resourcesData: dict[str, int] = {}
                     for i in range(len(splits) - 3):
                         resourcesData[f"R{i+1}"] = int(splits[i + 3])
 

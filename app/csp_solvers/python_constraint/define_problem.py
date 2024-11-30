@@ -1,11 +1,11 @@
 from constraint import Problem
-from data_parsing import project_data
+from data_parsing import ProjectData
 
 from .successor_constraint import successor_constraint
 from .resource_constraint import resource_constraint
 
 
-def define_problem(data: project_data.ProjectData) -> Problem:
+def define_problem(data: ProjectData) -> Problem:
     longestProject = max(
         data.projects_summary, key=lambda summary: summary.due_date
     ).due_date

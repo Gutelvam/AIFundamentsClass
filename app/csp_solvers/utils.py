@@ -1,4 +1,10 @@
+from enum import Enum
 from data_parsing import ProjectData
+
+
+class SolverType(Enum):
+    PYTHON_CONSTRAINT = 1
+    OR_TOOLS = 2
 
 
 def process_solution(solution, pData: ProjectData):

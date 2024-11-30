@@ -3,4 +3,4 @@ class DurationResource:
         self.job_number = job_number
         self.mode = mode
         self.duration = duration
-        self.resources = resources
+        self.resources: dict[str, int] = resources

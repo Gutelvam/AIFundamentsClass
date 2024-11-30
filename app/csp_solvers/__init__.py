@@ -1,1 +1,1 @@
-from .utils import process_solution
+from .utils import SolverType, process_solution
