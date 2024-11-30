@@ -11,9 +11,9 @@ logger.setLevel(logging.DEBUG)
 
 def main():
     start_time = time.time()
+    file_path = "data/p01_dataset_10.txt"
 
     try:
-        file_path = "data/p01_dataset_10.txt"
 
         with open(file_path, "r") as file:
             proj_data: ProjectData = parse_file(file)
