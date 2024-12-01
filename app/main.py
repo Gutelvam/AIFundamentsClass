@@ -13,8 +13,8 @@ logger.setLevel(logging.DEBUG)
 def main():
     start_time = time.time()
 
-    solver_type: SolverType = SolverType.OR_TOOLS
-    file_path = "data/p01_dataset_10.txt"
+    solver_type: SolverType = SolverType.PYTHON_CONSTRAINT
+    file_path = "data/p01_dataset_8.txt"
 
     with open(file_path, "r") as file:
         proj_data: ProjectData = parse_file(file)
@@ -26,11 +26,6 @@ def main():
 
                 problem = python_constraint.define_problem(proj_data)
                 solution = problem.getSolution()
-                if solution:
-                    solution = process_solution(solution=solution, pData=proj_data)
-                    logging.info(
-                        f" Processing time: {(time.time() - get_solution_time):.4f} seconds"
-                    )
 
             case SolverType.OR_TOOLS:
                 from csp_solvers import ortools

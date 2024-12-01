@@ -5,32 +5,33 @@ from data_parsing import ProjectData
 
 def define_problem(data: ProjectData):
     model: cp_model.CpModel = cp_model.CpModel()
-    longest_project = max(
-        data.projects_summary, key=lambda summary: summary.due_date
-    ).due_date
+    horizon = data.general_info.horizon
 
     # Define variables for start times
     start_times = {}
+    end_times = {}
     intervals = {}
 
     for job in data.precedence_relations:
         start_times[job.job_number] = model.NewIntVar(
-            0, longest_project, f"start_job_{job.job_number}"
+            0, horizon, f"start_job_{job.job_number}"
         )
         duration = data.durations_resources[job.job_number - 1].duration
+        end_times[job.job_number] = model.NewIntVar(
+            0, horizon, f"end_job_{job.job_number}"
+        )
         intervals[job.job_number] = model.NewIntervalVar(
             start_times[job.job_number],
             duration,
-            start_times[job.job_number] + duration,
+            end_times[job.job_number],
             f"interval_job_{job.job_number}",
         )
+        model.Add(end_times[job.job_number] == start_times[job.job_number] + duration)
 
     # Add precedence constraints
     for job in data.precedence_relations:
-        start_var = start_times[job.job_number]
         for successor in job.successors:
-            successor_var = start_times[successor]
-            model.Add(start_var + duration <= successor_var)
+            model.Add(end_times[job.job_number] <= start_times[successor])
 
     # Add resource constraints
     for resource_name, resource_availability in data.resource_availability.items():
@@ -51,6 +52,15 @@ def define_problem(data: ProjectData):
                 capacity=resource_availability.quantity,
             )
 
+    # Define makespan variable
+    makespan = model.NewIntVar(0, horizon, "makespan")
+
+    # Constrain makespan to be the maximum of all end times
+    for job in data.precedence_relations:
+        model.Add(makespan >= end_times[job.job_number])
+
+    # Set the objective to minimize makespan
+    model.Minimize(makespan)
 
     return model, start_times
 

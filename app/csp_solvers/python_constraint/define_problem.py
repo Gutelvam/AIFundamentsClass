@@ -6,11 +6,7 @@ from .resource_constraint import resource_constraint
 
 
 def define_problem(data: ProjectData) -> Problem:
-    longestProject = max(
-        data.projects_summary, key=lambda summary: summary.due_date
-    ).due_date
-
-    domain = range(longestProject + 1)
+    domain = range(data.general_info.horizon)
     start_times = [f"job_{job.job_number}" for job in data.precedence_relations]
 
     problem = Problem()

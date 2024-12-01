@@ -19,4 +19,5 @@ def process_solution(solution, pData: ProjectData):
     for key in solution:
         solution[key] -= min_offset
 
+    solution = dict(sorted(solution.items(), key=lambda x: int(x[0].split("_")[1])))
     return solution
