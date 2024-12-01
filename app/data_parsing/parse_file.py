@@ -9,6 +9,19 @@ from . import (
 
 
 def parse_file(file) -> ProjectData:
+    """
+    Parses a project data file into a ProjectData object.
+
+    Processes sections like general information, project summaries, precedence relations,
+    durations/resources, and resource availability, extracting relevant details into structured data.
+
+    Args:
+        file: An open file object containing the project data.
+
+    Returns:
+        ProjectData: Parsed data with project details, jobs, resources, and constraints.
+    """
+
     data = ProjectData()
     # Track the file section
     section = None
