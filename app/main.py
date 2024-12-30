@@ -41,8 +41,8 @@ def main():
     """
     Main function to solve the scheduling problem using the specified solver.
 
-    It loads project data from a file, defines the scheduling problem, and solves it using either the 
-    Python-Constraint solver or the OR-Tools solver based on the specified solver type. The solution 
+    It loads project data from a file, defines the scheduling problem, and solves it using either the
+    Python-Constraint solver or the OR-Tools solver based on the specified solver type. The solution
     is then logged, along with the time taken to find the solution and the total execution time.
 
     The function performs the following steps:

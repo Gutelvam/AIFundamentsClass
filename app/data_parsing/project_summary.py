@@ -10,7 +10,7 @@ class ProjectSummary:
         tardiness_cost (int): The cost incurred per unit time of tardiness.
         mpm_time (int): The minimum project makespan time.
     """
-    
+
     def __init__(
         self, project_number, jobs, release_date, due_date, tardiness_cost, mpm_time
     ):

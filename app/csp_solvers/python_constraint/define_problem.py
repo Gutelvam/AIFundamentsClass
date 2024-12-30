@@ -7,11 +7,11 @@ from .resource_constraint import resource_constraint
 
 def define_problem(data: ProjectData) -> Problem:
     """
-    Defines the constraint satisfaction problem (CSP) for scheduling jobs with precedence 
+    Defines the constraint satisfaction problem (CSP) for scheduling jobs with precedence
     and resource constraints.
 
     Args:
-        data (ProjectData): The project data containing job precedence relations, 
+        data (ProjectData): The project data containing job precedence relations,
                             durations, and resource information.
 
     Returns:

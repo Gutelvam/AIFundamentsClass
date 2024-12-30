@@ -7,13 +7,13 @@ def define_problem(data: ProjectData):
     """
     Defines a constraint optimization problem using Google OR-Tools.
 
-    This function creates a constraint programming model where jobs are assigned start times, 
-    end times, and intervals. Precedence constraints (i.e., a job must finish before its successor 
+    This function creates a constraint programming model where jobs are assigned start times,
+    end times, and intervals. Precedence constraints (i.e., a job must finish before its successor
     starts) and resource constraints (i.e., resource availability is respected) are added to the model.
     The objective is to minimize the makespan, which is the time required to complete all jobs.
 
     Args:
-        data (ProjectData): The project data containing job precedence relations, durations, 
+        data (ProjectData): The project data containing job precedence relations, durations,
                             resource availability, and other information.
 
     Returns:
@@ -86,7 +86,7 @@ def extract_solution(solver, start_times, data: ProjectData):
     """
     Extracts the solution for job start times from the solver.
 
-    After the solver has found a solution, this function extracts the start times 
+    After the solver has found a solution, this function extracts the start times
     for each job from the solver and returns them in a dictionary.
 
     Args:
@@ -95,7 +95,7 @@ def extract_solution(solver, start_times, data: ProjectData):
         data (ProjectData): The project data (used here for job precedence relations).
 
     Returns:
-        dict: A dictionary where keys are job names (e.g., "job_1") and values are the corresponding 
+        dict: A dictionary where keys are job names (e.g., "job_1") and values are the corresponding
             start times as determined by the solver.
     """
 

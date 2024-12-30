@@ -5,7 +5,7 @@ def resource_constraint(*start_times, time_slots, project_data: ProjectData):
     """
     Ensures that the total resource usage at any time does not exceed the available resource quantities.
 
-    This function checks the resource usage for each job over the defined time slots, 
+    This function checks the resource usage for each job over the defined time slots,
     and ensures that the resources used at any given time do not exceed the available quantity.
 
     Args:

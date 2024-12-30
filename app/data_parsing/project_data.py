@@ -19,6 +19,7 @@ class ProjectData:
         durations_resources (list[DurationResource]): A list of job durations and their resource requirements.
         resource_availability (dict[str, ResourceAvailability]): A dictionary mapping resource names to their availability.
     """
+
     def __init__(self):
         self.general_info: GeneralInformation = None
         self.projects_summary: list[ProjectSummary] = []

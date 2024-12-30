@@ -10,6 +10,7 @@ class SolverType(Enum):
         PYTHON_CONSTRAINT (int): Solver type using Python's constraint library.
         OR_TOOLS (int): Solver type using Google's OR-Tools.
     """
+
     PYTHON_CONSTRAINT = 1
     OR_TOOLS = 2
 
@@ -19,7 +20,7 @@ def process_solution(solution, pData: ProjectData):
     Processes and adjusts a solution based on precedence constraints.
 
     This function adjusts the solution by ensuring that jobs with precedence constraints
-    are correctly ordered and that the start times of jobs are normalized by the minimum 
+    are correctly ordered and that the start times of jobs are normalized by the minimum
     start time of the first jobs.
 
     Args:
